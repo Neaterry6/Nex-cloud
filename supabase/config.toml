@@ -1,0 +1,18 @@
+project_id = "nex-cloud"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "storage", "graphql_public"]
+
+[functions.protect-file]
+verify_jwt = true
+
+[functions.verify-file-password]
+verify_jwt = false
+
+[functions.share-access]
+verify_jwt = false
+
+[functions.send-email]
+verify_jwt = false

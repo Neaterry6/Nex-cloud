@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background text-ink antialiased;
+  font-feature-settings: 'ss01', 'cv11';
+}
+
+::selection {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+/* Liquid glass surfaces */
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+/* Skeleton shimmer */
+.skeleton {
+  @apply relative overflow-hidden bg-surface2 rounded-xl;
+}
+.skeleton::after {
+  content: '';
+  @apply absolute inset-0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  animation: shimmer 1.4s infinite;
+}
+
+/* Focus */
+:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* Buttons */
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200 select-none;
+}
+.btn-primary {
+  @apply btn text-white shadow-glass;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+}
+.btn-primary:hover { filter: brightness(1.06); transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0) scale(0.98); }
+.btn-secondary {
+  @apply btn bg-white text-ink border border-line hover:border-primary-200 hover:bg-primary-50;
+}
+.btn-ghost {
+  @apply btn text-ink-secondary hover:bg-surface2 hover:text-ink;
+}
+.btn-danger {
+  @apply btn bg-red-50 text-red-600 border border-red-100 hover:bg-red-100;
+}
+
+.card {
+  @apply bg-white border border-line rounded-2xl shadow-soft;
+}
+
+.input {
+  @apply w-full rounded-xl border border-line bg-white px-4 py-2.5 text-sm text-ink placeholder:text-ink-muted transition-colors focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none;
+}
+
+.label {
+  @apply block text-sm font-semibold text-ink-secondary mb-1.5;
+}
+
+/* Drag-over feedback */
+.dropzone-active {
+  outline: 2px dashed #2563eb;
+  outline-offset: -8px;
+  background: #eff6ff;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
