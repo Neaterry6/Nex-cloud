@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Loader2, Check } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
-import { AuthShell } from '../login/page'
+import { AuthShell } from '@/components/AuthShell'
 
 export default function SignupPage() {
   const [name, setName] = useState('')
