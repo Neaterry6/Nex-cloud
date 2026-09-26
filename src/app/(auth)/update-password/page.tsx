@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Loader2 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
-import { AuthShell } from '../login/page'
+import { AuthShell } from '@/components/AuthShell'
 
 export default function UpdatePasswordPage() {
   const [password, setPassword] = useState('')
