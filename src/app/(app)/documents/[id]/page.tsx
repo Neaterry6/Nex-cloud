@@ -7,7 +7,7 @@ import {
   Link2, Save, History, Download, Trash2, Eye, PencilLine, Loader2, MessageSquare,
 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
-import { saveDocument, getDocumentVersions, exportDocument, createDocument } from '@/lib/actions/docs'
+import { saveDocument, getDocumentVersions, exportDocument } from '@/lib/actions/docs'
 import { addComment } from '@/lib/actions/shares'
 import { useToast } from '@/components/Toaster'
 import { timeAgo, cn } from '@/lib/utils'
@@ -217,5 +217,3 @@ function previewHtml(md: string): string {
     return `<p class="my-2 leading-relaxed text-ink-secondary">${esc(t).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>').replace(/\[(.+?)\]\((.+?)\)/g, '<a class="text-primary underline" href="$2">$1</a>')}</p>`
   }).join('')
 }
-
-export { createDocument }
