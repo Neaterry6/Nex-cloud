@@ -1,12 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Cloud, Loader2 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 
-export default function LoginPage() {
+function LoginForm() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -42,6 +42,14 @@ export default function LoginPage() {
         <Link href="/signup" className="text-ink-secondary hover:text-ink">Create account</Link>
       </div>
     </AuthShell>
+  )
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<AuthShell title="Welcome back" subtitle="Sign in to your Nex Cloud workspace"><div className="h-40 animate-pulse rounded-xl bg-surface2" /></AuthShell>}>
+      <LoginForm />
+    </Suspense>
   )
 }
 
